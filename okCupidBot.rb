@@ -11,15 +11,11 @@ class OKCMessage
   require 'webdriver-user-agent'
 
   def self.okCupidBot
-     $i = 1
-
-
+    $i = 1
 
     b = Watir::Browser.new :firefox  # call the web driver
     b.goto 'http://www.okcupid.com'  # insert URL
-    # b.div(:class => ['user-msg--close','js-user-msg--close']).click #remove popup
-    # b.execute_script "document.getElementById('nav__plain-header').style.display = 'none';" #remove header
-
+    
     text_field = b.button(:class => 'splashIndividual-header-signin-splashButton') # search for input form box
     if text_field.exists?  # if the text field is found
       text_field.click
@@ -80,13 +76,7 @@ class OKCMessage
     end
     Watir::Wait.until { b.title != old_title } # wait until the page title changes to confirm load
     puts b.title  # print out new page title
-    # uncomment this to implement
-    # 10.times do
-    #   b.goto 'http://www.cnn.com'
-    #   load_secs = b.performance.summary[:response_time] / 1000
-    #   puts "Load Time: #{load_secs} seconds."
-    # end
-
+    
   end
   okCupidBot()
 
